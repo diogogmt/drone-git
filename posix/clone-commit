@@ -5,6 +5,14 @@ if [[ ! -z "${PLUGIN_DEPTH}" ]]; then
 	FLAGS="--depth=${PLUGIN_DEPTH}"
 fi
 
+if [[ ! -z "${PLUGIN_TAGS}" ]]; then
+	FLAGS="$FLAGS -t"
+fi
+
+if [[ ! -z "${PLUGIN_QUIET}" ]]; then
+	FLAGS="$FLAGS --quiet"
+fi
+
 if [ ! -d .git ]; then
 	git init
 	git remote add origin ${DRONE_REMOTE_URL}
